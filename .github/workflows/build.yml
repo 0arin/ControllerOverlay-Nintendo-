@@ -1,0 +1,41 @@
+name: Build ControllerOverlay DLL
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Download BakkesMod SDK
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/bakkesmodorg/BakkesModSDK/releases/latest/download/BakkesModSDKFull.zip" -OutFile BakkesModSDK.zip
+          Expand-Archive BakkesModSDK.zip -DestinationPath BakkesModSDK
+        shell: pwsh
+
+      - name: Write SDK path to registry
+        run: |
+          $sdkPath = "${{ github.workspace }}\BakkesModSDK\"
+          New-Item -Path "HKCU:\Software\BakkesMod" -Force
+          Set-ItemProperty -Path "HKCU:\Software\BakkesMod\AppPath" -Name "BakkesModPath" -Value $sdkPath -Force
+        shell: pwsh
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build Release x64
+        run: |
+          msbuild ControllerOverlay.sln /p:Configuration=Release /p:Platform=x64 /p:PostBuildEventUseInBuild=false
+        shell: pwsh
+
+      - name: Upload DLL artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ControllerOverlay
+          path: x64/Release/ControllerOverlay.dll
