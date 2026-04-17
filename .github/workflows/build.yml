@@ -13,16 +13,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Download BakkesMod SDK
+      - name: Clone BakkesMod SDK
         run: |
-          Invoke-WebRequest -Uri "https://github.com/bakkesmodorg/BakkesModSDK/releases/latest/download/BakkesModSDKFull.zip" -OutFile BakkesModSDK.zip
-          Expand-Archive BakkesModSDK.zip -DestinationPath BakkesModSDK
+          git clone https://github.com/bakkesmodorg/BakkesModSDK.git BakkesModSDK
         shell: pwsh
 
       - name: Write SDK path to registry
         run: |
           $sdkPath = "${{ github.workspace }}\BakkesModSDK\"
-          New-Item -Path "HKCU:\Software\BakkesMod" -Force
+          New-Item -Path "HKCU:\Software\BakkesMod\AppPath" -Force
           Set-ItemProperty -Path "HKCU:\Software\BakkesMod\AppPath" -Name "BakkesModPath" -Value $sdkPath -Force
         shell: pwsh
 
