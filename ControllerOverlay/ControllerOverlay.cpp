@@ -58,10 +58,10 @@ void ControllerOverlay::onLoad()
 		if (now.getStringValue() == "ps4") {
 			type = 1;
 			
-			inputs["XboxTypeS_A"] = { 0, false, BLUE, "-" };
-			inputs["XboxTypeS_B"] = { 0, false, RED, "-" };
-			inputs["XboxTypeS_X"] = { 0, false, PURPLE, "-" };
-			inputs["XboxTypeS_Y"] = { 0, false, DARKGREEN, "-" };
+			inputs["XboxTypeS_A"] = { 0, false, RED, "-" };
+			inputs["XboxTypeS_B"] = { 0, false, BLUE, "-" };
+			inputs["XboxTypeS_X"] = { 0, false, DARKGREEN, "-" };
+			inputs["XboxTypeS_Y"] = { 0, false, PURPLE, "-" };
 			inputs["XboxTypeS_LeftShoulder"] = { 0, false, WHITE, "L1" };
 			inputs["XboxTypeS_RightShoulder"] = { 0, false, WHITE, "R1" };
 			inputs["XboxTypeS_LeftTrigger"] = { 0, false, WHITE, "L2" };
@@ -72,10 +72,10 @@ void ControllerOverlay::onLoad()
 		else {
 			type = 0;
 
-			inputs["XboxTypeS_A"] = { 0, false, GREEN, "A" };
-			inputs["XboxTypeS_B"] = { 0, false, RED, "B" };
-			inputs["XboxTypeS_X"] = { 0, false, BLUE, "X" };
-			inputs["XboxTypeS_Y"] = { 0, false, YELLOW, "Y" };
+			inputs["XboxTypeS_A"] = { 0, false, RED, "B" };
+			inputs["XboxTypeS_B"] = { 0, false, GREEN, "A" };
+			inputs["XboxTypeS_X"] = { 0, false, YELLOW, "Y" };
+			inputs["XboxTypeS_Y"] = { 0, false, BLUE, "X" };
 			inputs["XboxTypeS_LeftShoulder"] = { 0, false, WHITE, "LB" };
 			inputs["XboxTypeS_RightShoulder"] = { 0, false, WHITE, "RB" };
 			inputs["XboxTypeS_LeftTrigger"] = { 0, false, WHITE, "LT" };
@@ -341,10 +341,10 @@ void ControllerOverlay::RenderImGui()
 	std::map<std::string, ImVec2> buttonTextPositions;
 
 	if (type == 0) {
-		buttonPositions["XboxTypeS_A"] = ImVec2(buttonsCenter.x, buttonsCenter.y + buttonRadius * 2);
-		buttonPositions["XboxTypeS_B"] = ImVec2(buttonsCenter.x + buttonRadius * 2, buttonsCenter.y);
-		buttonPositions["XboxTypeS_X"] = ImVec2(buttonsCenter.x - buttonRadius * 2, buttonsCenter.y);
-		buttonPositions["XboxTypeS_Y"] = ImVec2(buttonsCenter.x, buttonsCenter.y - buttonRadius * 2);
+		buttonPositions["XboxTypeS_A"] = ImVec2(buttonsCenter.x + buttonRadius * 2, buttonsCenter.y);
+		buttonPositions["XboxTypeS_B"] = ImVec2(buttonsCenter.x, buttonsCenter.y + buttonRadius * 2);
+		buttonPositions["XboxTypeS_X"] = ImVec2(buttonsCenter.x, buttonsCenter.y - buttonRadius * 2);
+		buttonPositions["XboxTypeS_Y"] = ImVec2(buttonsCenter.x - buttonRadius * 2, buttonsCenter.y);
 
 		buttonTextPositions["XboxTypeS_A"] = ImVec2(3 * scale + buttonPositions["XboxTypeS_A"].x - buttonRadius * 0.5f, buttonPositions["XboxTypeS_A"].y - buttonRadius * 0.5f - 1);
 		buttonTextPositions["XboxTypeS_B"] = ImVec2(3 * scale + buttonPositions["XboxTypeS_B"].x - buttonRadius * 0.5f, buttonPositions["XboxTypeS_B"].y - buttonRadius * 0.5f - 1);
@@ -365,10 +365,10 @@ void ControllerOverlay::RenderImGui()
 	}
 
 	else if (type == 1) {
-		buttonPositions["XboxTypeS_A"] = ImVec2(buttonsCenter.x, buttonsCenter.y + buttonRadius * 2);
-		buttonPositions["XboxTypeS_B"] = ImVec2(buttonsCenter.x + buttonRadius * 2, buttonsCenter.y);
-		buttonPositions["XboxTypeS_X"] = ImVec2(buttonsCenter.x - buttonRadius * 2, buttonsCenter.y);
-		buttonPositions["XboxTypeS_Y"] = ImVec2(buttonsCenter.x, buttonsCenter.y - buttonRadius * 2);
+		buttonPositions["XboxTypeS_A"] = ImVec2(buttonsCenter.x + buttonRadius * 2, buttonsCenter.y);
+		buttonPositions["XboxTypeS_B"] = ImVec2(buttonsCenter.x, buttonsCenter.y + buttonRadius * 2);
+		buttonPositions["XboxTypeS_X"] = ImVec2(buttonsCenter.x, buttonsCenter.y - buttonRadius * 2);
+		buttonPositions["XboxTypeS_Y"] = ImVec2(buttonsCenter.x - buttonRadius * 2, buttonsCenter.y);
 
 		for (std::pair<std::string, ImVec2> buttonPosition : buttonPositions) {
 			if (inputs[buttonPosition.first].pressed) {
@@ -380,20 +380,20 @@ void ControllerOverlay::RenderImGui()
 			}
 
 			if (buttonPosition.first == "XboxTypeS_A") {
+				drawList->AddCircle(buttonPosition.second, buttonRadius - 6 * scale, inputs[buttonPosition.first].color, 16, 2 * scale);
+			}
+
+			else if (buttonPosition.first == "XboxTypeS_B") {
 				drawList->AddLine(ImVec2(buttonPosition.second.x - 5 * scale, buttonPosition.second.y - 5 * scale), ImVec2(buttonPosition.second.x + 5 * scale, buttonPosition.second.y + 5 * scale), inputs[buttonPosition.first].color, 2 * scale);
 				drawList->AddLine(ImVec2(buttonPosition.second.x - 5 * scale, buttonPosition.second.y + 5 * scale), ImVec2(buttonPosition.second.x + 5 * scale, buttonPosition.second.y - 5 * scale), inputs[buttonPosition.first].color, 2 * scale);
 			}
 
-			else if (buttonPosition.first == "XboxTypeS_B") {
-				drawList->AddCircle(buttonPosition.second, buttonRadius - 6 * scale, inputs[buttonPosition.first].color, 16, 2 * scale);
-			}
-
 			else if (buttonPosition.first == "XboxTypeS_X") {
-				drawList->AddQuad(ImVec2(buttonPosition.second.x - 5 * scale, buttonPosition.second.y - 5 * scale), ImVec2(buttonPosition.second.x + 5 * scale, buttonPosition.second.y - 5 * scale), ImVec2(buttonPosition.second.x + 5 * scale, buttonPosition.second.y + 5 * scale), ImVec2(buttonPosition.second.x - 5 * scale, buttonPosition.second.y + 5 * scale), inputs[buttonPosition.first].color, 2 * scale);
+				drawList->AddTriangle(ImVec2(buttonPosition.second.x, buttonPosition.second.y - 5 * scale), ImVec2(buttonPosition.second.x + 5 * scale, buttonPosition.second.y + 4 * scale), ImVec2(buttonPosition.second.x - 5 * scale, buttonPosition.second.y + 4 * scale), inputs[buttonPosition.first].color, 2 * scale);
 			}
 
 			else if (buttonPosition.first == "XboxTypeS_Y") {
-				drawList->AddTriangle(ImVec2(buttonPosition.second.x, buttonPosition.second.y - 5 * scale), ImVec2(buttonPosition.second.x + 5 * scale, buttonPosition.second.y + 4 * scale), ImVec2(buttonPosition.second.x - 5 * scale, buttonPosition.second.y + 4 * scale), inputs[buttonPosition.first].color, 2 * scale);
+				drawList->AddQuad(ImVec2(buttonPosition.second.x - 5 * scale, buttonPosition.second.y - 5 * scale), ImVec2(buttonPosition.second.x + 5 * scale, buttonPosition.second.y - 5 * scale), ImVec2(buttonPosition.second.x + 5 * scale, buttonPosition.second.y + 5 * scale), ImVec2(buttonPosition.second.x - 5 * scale, buttonPosition.second.y + 5 * scale), inputs[buttonPosition.first].color, 2 * scale);
 			}
 		}
 	}
