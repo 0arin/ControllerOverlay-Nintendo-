@@ -279,22 +279,22 @@ void ControllerOverlay::RenderImGui()
 
 	if (inputs["XboxTypeS_LeftTrigger"].pressed) {
 		drawList->AddRectFilled(buttonLBPosition, ImVec2(buttonLBPosition.x + buttonWidth, buttonLBPosition.y + buttonHeight), WHITE, 8, ImDrawCornerFlags_TopLeft);
-		drawList->AddText(ImVec2(buttonLBPosition.x + 18 * scale, buttonLBPosition.y + 1 * scale), BLACK, inputs["XboxTypeS_LeftTrigger"].name.c_str());
+		{ ImVec2 ts = ImGui::CalcTextSize(inputs["XboxTypeS_LeftTrigger"].name.c_str()); drawList->AddText(ImVec2(buttonLBPosition.x + (buttonWidth - ts.x) * 0.5f, buttonLBPosition.y + (buttonHeight - ts.y) * 0.5f), BLACK, inputs["XboxTypeS_LeftTrigger"].name.c_str()); }
 	}
 
 	else {
 		drawList->AddRect(buttonLBPosition, ImVec2(buttonLBPosition.x + buttonWidth, buttonLBPosition.y + buttonHeight), WHITE, 8, ImDrawCornerFlags_TopLeft, 2 * scale);
-		drawList->AddText(ImVec2(buttonLBPosition.x + 18 * scale, buttonLBPosition.y + 1 * scale), WHITE, inputs["XboxTypeS_LeftTrigger"].name.c_str());
+		{ ImVec2 ts = ImGui::CalcTextSize(inputs["XboxTypeS_LeftTrigger"].name.c_str()); drawList->AddText(ImVec2(buttonLBPosition.x + (buttonWidth - ts.x) * 0.5f, buttonLBPosition.y + (buttonHeight - ts.y) * 0.5f), WHITE, inputs["XboxTypeS_LeftTrigger"].name.c_str()); }
 	}
 
 	if (inputs["XboxTypeS_RightTrigger"].pressed) {
 		drawList->AddRectFilled(buttonRBPosition, ImVec2(buttonRBPosition.x + buttonWidth, buttonRBPosition.y + buttonHeight), WHITE, 8, ImDrawCornerFlags_TopRight);
-		drawList->AddText(ImVec2(buttonRBPosition.x + 18 * scale, buttonRBPosition.y + 1 * scale), BLACK, inputs["XboxTypeS_RightTrigger"].name.c_str());
+		{ ImVec2 ts = ImGui::CalcTextSize(inputs["XboxTypeS_RightTrigger"].name.c_str()); drawList->AddText(ImVec2(buttonRBPosition.x + (buttonWidth - ts.x) * 0.5f, buttonRBPosition.y + (buttonHeight - ts.y) * 0.5f), BLACK, inputs["XboxTypeS_RightTrigger"].name.c_str()); }
 	}
 
 	else {
 		drawList->AddRect(buttonRBPosition, ImVec2(buttonRBPosition.x + buttonWidth, buttonRBPosition.y + buttonHeight), WHITE, 8, ImDrawCornerFlags_TopRight, 2 * scale);
-		drawList->AddText(ImVec2(buttonRBPosition.x + 18 * scale, buttonRBPosition.y + 1 * scale), WHITE, inputs["XboxTypeS_RightTrigger"].name.c_str());
+		{ ImVec2 ts = ImGui::CalcTextSize(inputs["XboxTypeS_RightTrigger"].name.c_str()); drawList->AddText(ImVec2(buttonRBPosition.x + (buttonWidth - ts.x) * 0.5f, buttonRBPosition.y + (buttonHeight - ts.y) * 0.5f), WHITE, inputs["XboxTypeS_RightTrigger"].name.c_str()); }
 	}
 
 	p.y += buttonHeight + 4 * scale;
@@ -304,22 +304,22 @@ void ControllerOverlay::RenderImGui()
 
 	if (inputs["XboxTypeS_LeftShoulder"].pressed) {
 		drawList->AddRectFilled(buttonLTPosition, ImVec2(buttonLTPosition.x + buttonWidth, buttonLTPosition.y + buttonHeight), WHITE);
-		drawList->AddText(ImVec2(buttonLTPosition.x + 18 * scale, buttonLTPosition.y + 1 * scale), BLACK, inputs["XboxTypeS_LeftShoulder"].name.c_str());
+		{ ImVec2 ts = ImGui::CalcTextSize(inputs["XboxTypeS_LeftShoulder"].name.c_str()); drawList->AddText(ImVec2(buttonLTPosition.x + (buttonWidth - ts.x) * 0.5f, buttonLTPosition.y + (buttonHeight - ts.y) * 0.5f), BLACK, inputs["XboxTypeS_LeftShoulder"].name.c_str()); }
 	}
 
 	else {
 		drawList->AddRect(buttonLTPosition, ImVec2(buttonLTPosition.x + buttonWidth, buttonLTPosition.y + buttonHeight), WHITE, 0, 0, 2 * scale);
-		drawList->AddText(ImVec2(buttonLTPosition.x + 18 * scale, buttonLTPosition.y + 1 * scale), WHITE, inputs["XboxTypeS_LeftShoulder"].name.c_str());
+		{ ImVec2 ts = ImGui::CalcTextSize(inputs["XboxTypeS_LeftShoulder"].name.c_str()); drawList->AddText(ImVec2(buttonLTPosition.x + (buttonWidth - ts.x) * 0.5f, buttonLTPosition.y + (buttonHeight - ts.y) * 0.5f), WHITE, inputs["XboxTypeS_LeftShoulder"].name.c_str()); }
 	}
 
 	if (inputs["XboxTypeS_RightShoulder"].pressed) {
 		drawList->AddRectFilled(buttonRTPosition, ImVec2(buttonRTPosition.x + buttonWidth, buttonRTPosition.y + buttonHeight), WHITE);
-		drawList->AddText(ImVec2(buttonRTPosition.x + 18 * scale, buttonRTPosition.y + 1 * scale), BLACK, inputs["XboxTypeS_RightShoulder"].name.c_str());
+		{ ImVec2 ts = ImGui::CalcTextSize(inputs["XboxTypeS_RightShoulder"].name.c_str()); drawList->AddText(ImVec2(buttonRTPosition.x + (buttonWidth - ts.x) * 0.5f, buttonRTPosition.y + (buttonHeight - ts.y) * 0.5f), BLACK, inputs["XboxTypeS_RightShoulder"].name.c_str()); }
 	}
 
 	else {
 		drawList->AddRect(buttonRTPosition, ImVec2(buttonRTPosition.x + buttonWidth, buttonRTPosition.y + buttonHeight), WHITE, 0, 0, 2 * scale);
-		drawList->AddText(ImVec2(buttonRTPosition.x + 18 * scale, buttonRTPosition.y + 1 * scale), WHITE, inputs["XboxTypeS_RightShoulder"].name.c_str());
+		{ ImVec2 ts = ImGui::CalcTextSize(inputs["XboxTypeS_RightShoulder"].name.c_str()); drawList->AddText(ImVec2(buttonRTPosition.x + (buttonWidth - ts.x) * 0.5f, buttonRTPosition.y + (buttonHeight - ts.y) * 0.5f), WHITE, inputs["XboxTypeS_RightShoulder"].name.c_str()); }
 	}
 
 	p.y += buttonHeight + 16 * scale;
@@ -346,10 +346,10 @@ void ControllerOverlay::RenderImGui()
 		buttonPositions["XboxTypeS_X"] = ImVec2(buttonsCenter.x, buttonsCenter.y - buttonRadius * 2);
 		buttonPositions["XboxTypeS_Y"] = ImVec2(buttonsCenter.x - buttonRadius * 2, buttonsCenter.y);
 
-		buttonTextPositions["XboxTypeS_A"] = ImVec2(3 * scale + buttonPositions["XboxTypeS_A"].x - buttonRadius * 0.5f, buttonPositions["XboxTypeS_A"].y - buttonRadius * 0.5f - 1);
-		buttonTextPositions["XboxTypeS_B"] = ImVec2(3 * scale + buttonPositions["XboxTypeS_B"].x - buttonRadius * 0.5f, buttonPositions["XboxTypeS_B"].y - buttonRadius * 0.5f - 1);
-		buttonTextPositions["XboxTypeS_X"] = ImVec2(3 * scale + buttonPositions["XboxTypeS_X"].x - buttonRadius * 0.5f, buttonPositions["XboxTypeS_X"].y - buttonRadius * 0.5f - 1);
-		buttonTextPositions["XboxTypeS_Y"] = ImVec2(3 * scale + buttonPositions["XboxTypeS_Y"].x - buttonRadius * 0.5f, buttonPositions["XboxTypeS_Y"].y - buttonRadius * 0.5f - 1);
+		for (const std::string& key : {"XboxTypeS_A", "XboxTypeS_B", "XboxTypeS_X", "XboxTypeS_Y"}) {
+			ImVec2 ts = ImGui::CalcTextSize(inputs[key].name.c_str());
+			buttonTextPositions[key] = ImVec2(buttonPositions[key].x - ts.x * 0.5f, buttonPositions[key].y - ts.y * 0.5f);
+		}
 
 		for (std::pair<std::string, ImVec2> buttonPosition : buttonPositions) {
 			if (inputs[buttonPosition.first].pressed) {
