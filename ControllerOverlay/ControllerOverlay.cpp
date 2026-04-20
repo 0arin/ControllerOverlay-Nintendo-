@@ -72,10 +72,10 @@ void ControllerOverlay::onLoad()
 		else {
 			type = 0;
 
-			inputs["XboxTypeS_A"] = { 0, false, RED, "B" };
-			inputs["XboxTypeS_B"] = { 0, false, GREEN, "A" };
-			inputs["XboxTypeS_X"] = { 0, false, YELLOW, "Y" };
-			inputs["XboxTypeS_Y"] = { 0, false, BLUE, "X" };
+			inputs["XboxTypeS_A"] = { 0, false, RED, "A" };
+			inputs["XboxTypeS_B"] = { 0, false, YELLOW, "B" };
+			inputs["XboxTypeS_X"] = { 0, false, BLUE, "X" };
+			inputs["XboxTypeS_Y"] = { 0, false, GREEN, "Y" };
 			inputs["XboxTypeS_LeftShoulder"] = { 0, false, WHITE, "LB" };
 			inputs["XboxTypeS_RightShoulder"] = { 0, false, WHITE, "RB" };
 			inputs["XboxTypeS_LeftTrigger"] = { 0, false, WHITE, "LT" };
