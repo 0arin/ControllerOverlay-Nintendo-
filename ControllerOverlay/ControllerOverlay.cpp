@@ -76,10 +76,10 @@ void ControllerOverlay::onLoad()
 			inputs["XboxTypeS_B"] = { 0, false, WHITE, "B" };
 			inputs["XboxTypeS_X"] = { 0, false, WHITE, "X" };
 			inputs["XboxTypeS_Y"] = { 0, false, WHITE, "Y" };
-			inputs["XboxTypeS_LeftShoulder"] = { 0, false, WHITE, "LB" };
-			inputs["XboxTypeS_RightShoulder"] = { 0, false, WHITE, "RB" };
-			inputs["XboxTypeS_LeftTrigger"] = { 0, false, WHITE, "LT" };
-			inputs["XboxTypeS_RightTrigger"] = { 0, false, WHITE, "RT" };
+			inputs["XboxTypeS_LeftShoulder"] = { 0, false, WHITE, "L" };
+			inputs["XboxTypeS_RightShoulder"] = { 0, false, WHITE, "R" };
+			inputs["XboxTypeS_LeftTrigger"] = { 0, false, WHITE, "ZL" };
+			inputs["XboxTypeS_RightTrigger"] = { 0, false, WHITE, "ZR" };
 			inputs["XboxTypeS_LeftThumbStick"] = { 0, false, GREY, "LS" };
 		}
 
